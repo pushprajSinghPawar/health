@@ -1,0 +1,87 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'DIET MONITER',
+      theme: ThemeData(
+        primarySwatch: Colors.indigo,
+      ),
+      home: const MyHomePage(title: 'Diet Monitor'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+  final String title;  
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  TextEditingController passwordControl = TextEditingController();
+  TextEditingController usernameControl = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body:ListView(
+        padding: const EdgeInsets.all(8),
+        children: <Widget>[
+          SizedBox(
+            height: 150,
+            child: const Center(child: Text('LOGIN PAGE')),
+          ),
+          SizedBox(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children:  <Widget>[
+                Icon(
+                  size:80,
+                  color : Colors.deepOrangeAccent,
+                  Icons.person_outline,
+                ),
+                Expanded(
+                  child: TextField(
+                    controller: usernameControl,
+                )),
+              ],
+            ),
+          ),
+          SizedBox(
+            child: Row(
+              children:  <Widget>[
+                Icon(
+                  size:80,
+                  color : Colors.deepOrangeAccent,
+                  Icons.key
+                ),
+                Expanded(
+                  child: TextField(
+                    controller: passwordControl,
+                )),
+              ],
+            ),
+          ),
+          ElevatedButton(onPressed: (){}, child: Text('Login')),
+          ElevatedButton(onPressed: (){}, child: Text('Create an Account')),
+      ],
+      )
+      );
+    }
+}
